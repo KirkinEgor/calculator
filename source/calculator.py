@@ -1,6 +1,7 @@
 from customtkinter import *
 import tkinter.messagebox as messagebox
 from PIL import Image, ImageDraw, ImageFont
+import os
 
 image_font = ImageFont.load_default(53)
 
@@ -16,9 +17,12 @@ class App(CTk):
         self.first_num = None
         self.second_num = None
         self.error_window = None
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        image_path = os.path.join(project_root, "assets", "calc.png")
 
 
-        self.bg_image = CTkImage(light_image=Image.open("/home/egor/Python/gui/calc.png"), size=(1280, 1280))
+        self.bg_image = CTkImage(light_image=Image.open(image_path), size=(1280, 1280))
         self.bg_label = CTkLabel(self, image=self.bg_image, text="")
         self.bg_label.pack(fill="both", expand=True)
 
